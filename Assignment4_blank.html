@@ -14,7 +14,7 @@
                   // init the FB JS SDK
                  FB.init({
                  appId      : '266189046748285',                        // App ID from the app dashboard
-                 channelUrl : 'andrewku.github.io/FB/Assignment4_blank.html', // Channel file for x-domain comms
+                 channelUrl : 'http://andrewku.github.io/FB/Assignment4_blank.html', // Channel file for x-domain comms
                  status     : true,                                 // Check Facebook Login status
                  xfbml      : true                                  // Look for social plugins on the page
                 });
@@ -35,8 +35,17 @@
 		<script>
 			$(window).load(function () {
                    FB.login(function(response) {
+                   	 if (response.authResponse) {
+                       console.log('Welcome!  Fetching your information.... ');
+                       FB.api('/me', function(response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                          loginDialog(); });
+                        } else {
+                       console.log('User cancelled login or did not fully authorize.');
+                          }
+                           }
    
-                 }, {scope: 'email,user_likes'});
+                          }, {scope: 'name, gender, birthday, location, friendlists'});
 
 				/*
 				第二步：請在此處加入FB.login，請參考 https://developers.facebook.com/docs/reference/javascript/FB.login/
@@ -48,6 +57,7 @@
 			
 			function loginDialog(){
 				
+				console.log('Yes')
 				/*
 				第三步：以FB.getLoginStatus來確認使用者的登入狀態，請參考 https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus/
 				*/
