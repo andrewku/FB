@@ -10,16 +10,12 @@
 	<body>
 		<div id="fb-root"></div>
               <script>
-              var uid;
-			  var Access_Token;
-			  var GroupID = new Array;
-			  var GroupMember = new Array;
 
                  window.fbAsyncInit = function() {
                   // init the FB JS SDK
                  FB.init({
                  appId      : '266189046748285',                        // App ID from the app dashboard
-                 channelUrl : 'http://andrewku.github.io/FB/Assignment4_blank.html', // Channel file for x-domain comms
+                 //channelUrl : 'http://andrewku.github.io/FB/Assignment4_blank.html', // Channel file for x-domain comms
                  status     : true,                                 // Check Facebook Login status
                  xfbml      : true                                  // Look for social plugins on the page
                 });
@@ -124,6 +120,11 @@
 					
 			}
 			
+
+			var GroupID = new Array;
+			var GroupMember = new Array;
+
+
 			function getFr(temp){
 			
 				/*第六步*/
