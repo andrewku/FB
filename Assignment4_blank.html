@@ -88,7 +88,18 @@
 			}
 			
 			function listFriends(){
-					console.log('listfriend_sucess');
+				FB.api('/me/friends', function(response){
+	            var i=0;
+				while(response['data'][i] != null){
+				var fId = response['data'][i]['id'];
+		        var fName = response['data'][i]['name'];
+		        $("<div onclick='changeInfo("+fId+");'><img src='https://graph.facebook.com/"+ fId + "/picture' /><span>"+fName+"</span></div>").appendTo("#FillInList");
+
+		        i++;
+	               }
+                 });
+
+				console.log('listfriend_sucess');
 				//from now on we can decorate our website with the data related to the facebook.
 				//list all your friends.
 				/*
